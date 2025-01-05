@@ -1,0 +1,31 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+#issueTrackerURL = ""
+license = "MPL-2.0"
+
+[[mods]]
+modId = "seasons"
+version = "${version}"
+displayName = "Forge Seasons"
+authors = "armelin1 (port), D4rkness_King (original)"
+description = '''
+A simple mod that adds seasons to the game, dynamically changing biomes as you play.
+'''
+logoFile = "assets/seasons/icon.png"
+
+[[dependencies.seasons]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.seasons]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[mixins]]
+config = "seasons.mixins.json"

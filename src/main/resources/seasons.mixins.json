@@ -1,0 +1,33 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "one.armelin.seasons.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AbstractBlockMixin",
+    "AnimalEntityMixin",
+    "BiomeMixin",
+    "FreezeTopLayerFeatureMixin",
+    "IceBlockMixin",
+    "LakeFeatureMixin",
+    "ServerWorldMixin",
+    "SnowBlockMixin",
+    "SugarCaneBlockMixin",
+    "VanillaFertilizablesMixin",
+    "WorldViewMixin"
+  ],
+  "client": [
+    "BiomeColorsMixin",
+    "BlockColorsMixin",
+    "BlockModelsMixin",
+    "ItemMixin",
+    "ItemModelsMixin",
+    "JsonUnbakedModelMixin",
+    "ModelLoaderMixin",
+    "MultipartBakedModelBuilderMixin",
+    "WorldRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
