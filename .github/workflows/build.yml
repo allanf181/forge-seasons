@@ -1,0 +1,37 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: "!(contains(github.event.head_commit.message, 'ci skip') || contains(github.event.head_commit.message, 'skip ci'))"
+    steps:
+      - uses: actions/checkout@v2.2.0
+      - uses: joschi/setup-jdk@v2.3.0
+        with:
+          java-version: '21' # The OpenJDK version to make available on the path
+          architecture: 'x64' # defaults to 'x64'
+      - run: |
+          chmod +x ./gradlew
+          ./gradlew build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: build/libs/
+      - uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: HbDalQRD
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          curseforge-id: 1172705
+          curseforge-token: ${{ secrets.CURSE_API_KEY }}
+
+          files: |
+            build/libs/!(*-@(dev|sources|javadoc)).jar
+
+          version-type: release
+          loaders: neoforge
+          game-versions: 1.21.1
+          dependencies: |
+            forgified-fabric-api(required){modrinth:Aqlf1Shp}{curseforge:889079}#(ignore:github)
